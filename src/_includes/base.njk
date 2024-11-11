@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"/>
+        <title>{{ title | safe | trim }}</title>
+        <meta name="description" content="{{ description | safe | trim }}"/>
+        <meta name="og:locale" content="en_US"/>
+        <meta name="og:type" content="website"/>
+        <meta name="og:url" content="{{ meta.url }}{{ page.url }}"/>
+        <meta name="og:title" content="{{ title | safe | trim }}"/>
+        <meta name="og:description" content="{{ description | safe | trim }}"/>
+        <link href="/style.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/dist/assets/img/favicon.ico">
+    </head>
+    <body>
+        <main class="container relative mx-auto scroll-my-12 overflow-auto p-4 md:p-16 print:p-12 leading-normal">
+            {% block content %}{% endblock %}
+        </main>
+    </body>
+</html>

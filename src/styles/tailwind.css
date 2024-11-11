@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Geist+Sans:wght@400;600&family=Geist+Mono:wght@400;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+  font-synthesis: none;
+}
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
