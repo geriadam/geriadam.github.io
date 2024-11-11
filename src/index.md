@@ -1,5 +1,5 @@
 ---
 layout: templates/home.njk
 title: Geri Adam Saputra
-description: "Deploy in minutes, not months; get all the Equinix locations, clouds and partners - without the hardware holdups."
+description: "Fullstack Developer with 7+ years in building high-performance web applications, focused on scalable solutions, user experience, and cross-functional collaboration."
 ---
