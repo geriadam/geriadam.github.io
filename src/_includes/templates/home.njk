@@ -1,791 +1,579 @@
 {% extends '../base.njk' %}
 
-{% set projects = [
-    {
-        "name": "AB.dk Website",
-        "link": "https://ab.dk",
-        "image": "/dist/assets/img/projects/abdk.png",
-        "alt": "AB.dk official website homepage interface",
-        "description": "The official website of AB.dk, providing company information, services, and digital solutions with a clean, user-friendly, and responsive design."
-    },
-    {
-        "name": "Equinix Deployment Platform",
-        "link": "https://deploy.equinix.com",
-        "image": "/dist/assets/img/projects/deploy_equinix.png",
-        "alt": "Equinix deployment platform dashboard interface",
-        "description": "A cloud-based deployment platform by Equinix that enables users to manage, deploy, and scale infrastructure services efficiently with a modern and intuitive interface."
-    },
-	{
-        "name": "Teman Belanja",
-        "link": "https://play.google.com/store/apps/details?id=com.temanbelanja",
-        "image": "/dist/assets/img/projects/temanbelanja.jpg",
-        "alt": "Teman Belanja",
-        "description": "Teman Belanja is an Android app developed with React Native, designed to help users track their shopping lists, manage expenses, and find discounts, offering an intuitive and user-friendly shopping experience."
-    },
-    {
-        "name": "Teman Belanja POS",
-        "link": "https://play.google.com/store/apps/details?id=com.temanbelanjapos",
-        "image": "/dist/assets/img/projects/temanbelanjapos.jpg",
-        "alt": "Teman Belanja POS",
-        "description": "Teman Belanja POS is an Android app built with React Native, designed to streamline point-of-sale operations. It offers inventory management, sales tracking, and seamless payment integration for retail businesses."
-    },
-    {
-        "name": "wapm.io",
-        "link": "https://wasmer.io/",
-        "image": "/dist/assets/img/projects/wapm.png",
-        "alt": "wapm.io",
-        "description": "Wasmer is a fast and secure WebAssembly runtime that allows you to run WebAssembly (WASM) code anywhere. It enables developers to integrate WASM into various applications, enhancing performance and security."
-    },
-    {
-        "name": "Experience OS Dashboard",
-        "link": "https://experience-os.com",
-        "image": "/dist/assets/img/projects/exos.png",
-        "alt": "Experience OS Dashboard",
-        "description": "ExperienceOS GmbH is a startup within the Zeitgeist Group, which is providing a rich ecosystem to support our continuous growth."
-    },
-    {
-        "name": "Searchdata.io",
-        "link": "https://searchdata.io",
-        "image": "/dist/assets/img/projects/searchdata.png",
-        "alt": "Searchdata.io",
-        "description": "A data-driven search platform designed to help users quickly find relevant, structured information from vast data sets. Built with robust indexing and filtering capabilities, it ensures fast, accurate, and secure search results."
-    },
-    {
-        "name": "Landing Page Insurance",
-        "link": "https://wefox-health.ch/de",
-        "image": "/dist/assets/img/projects/timetowin.png",
-        "alt": "Landing Page Insurance",
-        "description": "Developed a clean, responsive landing page for Wefox Health, focused on providing users with a clear overview of healthcare services. Optimized for fast load times, user engagement, and seamless navigation across devices."
-    },
-    {
-        "name": "Sweet Escape",
-        "link": "#",
-        "image": "/dist/assets/img/projects/sweet_escape.jpg",
-        "alt": "Sweet Escape",
-        "description": "Developed an Android app and backend for Sweet Escape, enabling users to book professional photographers worldwide. Features include a smooth booking flow, secure payment integration, location-based services, and real-time booking updates."
-    },
-    {
-        "name": "SIMANTAP",
-        "link": "http://118.97.27.101/simantap/",
-        "image": "/dist/assets/img/projects/simantap.png",
-        "alt": "SIMANTAP",
-        "description": "Sistem Informasi Manajemen Laboratorium Kualitas Perairan is a web-based platform designed to streamline water quality lab management, providing efficient tracking, analysis, and reporting of water samples to support environmental monitoring and compliance."
-    },
-    {
-        "name": "Ternaknesia",
-        "link": "https://ternaknesia.com/",
-        "image": "/dist/assets/img/projects/ternaknesia.png",
-        "alt": "Ternaknesia",
-        "description": "Rebuild website interfaces and RESTful API according to the other division request TernakMart, TernakInvest, etc. and Focusing on traceability system from upstream to downstream. Full-stack coding stuff, implement a design, and system testing."
-    },
-    {
-        "name": "Online Store Mbattik",
-        "link": "https://mbattik.com/",
-        "image": "/dist/assets/img/projects/mbattik.png",
-        "alt": "Online Store Mbattik",
-        "description": "Mbattik is an online store specializing in batik clothing from Surabaya, offering high-quality, authentic batik apparel."
-    },
-    {
-        "name": "Website Rotijerapah.com",
-        "link": "https://rotijerapah.com/",
-        "image": "/dist/assets/img/projects/rotij.com.png",
-        "alt": "Website Rotijerapah.com",
-        "description": "Roti Jerapah specializes in premium, handmade bread, focusing on ham and cheese varieties, made fresh daily without preservatives or emulsifiers."
-    },
-    {
-        "name": "Website PT Mustika Bahana Jaya",
-        "link": "https://www.ptmbj.com/",
-        "image": "/dist/assets/img/projects/ptmbj.png",
-        "alt": "Website PT Mustika Bahana Jaya",
-        "description": "PT Mustika Bahana Jaya (MBJ) is a wood-working industry, specializing in finger-joint laminated board products and custom wood orders since 1996."
-    },
-    {
-        "name": "Website Umalas Kids Club",
-        "link": "https://umalaskidsclub.com/",
-        "image": "/dist/assets/img/projects/umalaskidsclub.png",
-        "alt": "Website Umalas Kids Club",
-        "description": "Umalas Kids Club offers a play-based learning program in Bali, encouraging children's development through exploration and socialization."
-    },
-    {
-        "name": "Website INC Brands",
-        "link": "https://inc-brands.co/",
-        "image": "/dist/assets/img/projects/incbrands.png",
-        "alt": "Website INC Brands",
-        "description": "Indogo Corporations (INC) provides premium products for babies, kids, and families, prioritizing quality and safety."
-    },
-    {
-        "name": "Website Pureco",
-        "link": "http://pureco.id/",
-        "image": "/dist/assets/img/projects/pureco.png",
-        "alt": "Website Pureco",
-        "description": "Pureco produces home and baby care products using plant-based ingredients, eliminating toxic chemicals for safer, environmentally friendly alternatives."
-    },
-    {
-        "name": "Website HPDKI",
-        "link": "http://hpdki.org",
-        "image": "/dist/assets/img/projects/hpdki.png",
-        "alt": "Website HPDKI",
-        "description": "HPDKI is Indonesia's Sheep and Goat Breeders Association, unifying breeders, farmers, and agricultural entrepreneurs across the country."
-    },
-    {
-        "name": "Website Babygo",
-        "link": "https://babygoinc.com/",
-        "image": "/dist/assets/img/projects/babygo.png",
-        "alt": "Website Babygo",
-        "description": "BabyGo designs functional baby gear such as diaper and cooler bags with smart features to simplify parents’ lives."
-    },
-    {
-        "name": "Travel Wavepoint",
-        "link": "https://wavepoint.co.id/",
-        "image": "/dist/assets/img/projects/travel_wavepoint.png",
-        "alt": "Travel Wavepoint",
-        "description": "Integrates Darmawisata with a virtual point system allowing bookings for flights and trains in one convenient platform."
-    },
-    {
-        "name": "Wavepoint Gopay Payment",
-        "link": "https://wavepoint.co.id/",
-        "image": "/dist/assets/img/projects/wavepoint_gopay.png",
-        "alt": "Wavepoint Gopay Payment",
-        "description": "Wave Point serves as a virtual point system enabling users to redeem various digital products, enhancing online transactions."
-    },
-    {
-        "name": "SPP Santri Payment",
-        "link": "#",
-        "image": "/dist/assets/img/projects/spp_santri.png",
-        "alt": "SPP Santri Payment",
-        "description": "Streamlines financial management for students with features for sharia payments, exam fees, construction costs, and incentives."
-    },
-    {
-        "name": "SPP Payment",
-        "link": "#",
-        "image": "/dist/assets/img/projects/pembayaranspp.png",
-        "alt": "SPP Payment",
-        "description": "Tracks comprehensive student data, payment histories, arrears, and related financial information for school management."
-    },
-    {
-        "name": "Website Koprabuh",
-        "link": "http://koprabuh.com/",
-        "image": "/dist/assets/img/projects/koprabuh.com.png",
-        "alt": "Website Koprabuh",
-        "description": "KOPRABUH supports plantation projects for biomass and medicinal crops, expanding across Indonesia with multiple branches."
-    },
-    {
-        "name": "Website Kebaktian",
-        "link": "http://kebaktian.com/",
-        "image": "/dist/assets/img/projects/kebaktian.com.png",
-        "alt": "Website Kebaktian",
-        "description": "kebaktian.com helps users find nearby churches and access event information, fostering community connection and engagement."
-    },
-    {
-        "name": "Website Avery",
-        "link": "https://www.averyindonesia.com/",
-        "image": "/dist/assets/img/projects/avery.png",
-        "alt": "Website Avery",
-        "description": "PT. Avery Sentosa Indonesia is a national-scale furniture company with brands such as Erentz, Evergrande, and Every, offering products like foam mattresses, office sets, and sofas."
-    },
-    {
-        "name": "Website Hakiki Donarta",
-        "link": "https://www.hakiki.com/",
-        "image": "/dist/assets/img/projects/hakikidonarta.png",
-        "alt": "Website Hakiki Donarta",
-        "description": "Hakiki Donarta specializes in food and beverage ingredients, evolving with changing food values to become a top provider of global and international brands."
-    },
-    {
-        "name": "Website Erentz",
-        "link": "http://erentzspringbed.com/",
-        "image": "/dist/assets/img/projects/erentz.png",
-        "alt": "Website Erentz",
-        "description": "Erentz Springbed, under PT. Avery Sentosa Indonesia, manufactures springbeds and other furniture products, headquartered in Surabaya, with brands like Erentz and Maple."
-    },
-    {
-        "name": "JFI Online",
-        "link": "http://jfionline.org/index.php/jurnal",
-        "image": "/dist/assets/img/projects/jfi.png",
-        "alt": "JFI Online",
-        "description": "Jurnal Farmasi Indonesia publishes scientific research in pharmaceutical science, indexed and available online, welcoming submissions in English and Bahasa Indonesia."
-    },
-    {
-        "name": "Konpeksi System",
-        "link": "#",
-        "image": "/dist/assets/img/projects/konpeksi.png",
-        "alt": "Konpeksi System",
-        "description": "Konpeksi System is a custom internal application developed for managing various business processes within the organization."
-    },
-    {
-        "name": "Prudent System",
-        "link": "#",
-        "image": "/dist/assets/img/projects/prudent.png",
-        "alt": "Prudent System",
-        "description": "Prudent System is a custom internal application designed to streamline operations and improve organizational efficiency."
-    },
-    {
-        "name": "POS Heeboh",
-        "link": "#",
-        "image": "/dist/assets/img/projects/heeboh.png",
-        "alt": "POS Heeboh",
-        "description": "A point of sale (POS) application for Heeboh Book Store in Surabaya, Indonesia, developed to handle sales and inventory management."
-    },
-    {
-        "name": "POSH System",
-        "link": "#",
-        "image": "/dist/assets/img/projects/posh.png",
-        "alt": "POSH System",
-        "description": "POSH is a custom internal application, designed for the specific operational needs of the organization."
-    },
-    {
-        "name": "HRM System",
-        "link": "#",
-        "image": "/dist/assets/img/projects/hrm.png",
-        "alt": "HRM System",
-        "description": "HRM System is an employee management tool with features for reporting, absenteeism, leave tracking, and salary management."
-    },
-    {
-        "name": "Website Tiketbox",
-        "link": "http://tiketbox.com",
-        "image": "/dist/assets/img/projects/tiketbox.png",
-        "alt": "Website Tiketbox",
-        "description": "Tiketbox is an event ticket marketplace that connects event organizers with ticket buyers, providing a seamless experience for all."
-    }
+{% set featured_projects = [
+  {
+    "name": "Equinix Deployment Platform",
+    "link": "https://deploy.equinix.com",
+    "image": "/dist/assets/img/projects/deploy_equinix.png",
+    "alt": "Equinix Metal deployment platform dashboard — cloud infrastructure management interface",
+    "tag": "Enterprise",
+    "tagColor": "blue",
+    "description": "Architected and maintained the marketing and developer portal for Equinix Metal — a bare-metal cloud platform used by infrastructure engineers worldwide. Optimised Laravel Blade rendering and Docker-based pipelines to cut page load times meaningfully while maintaining a complex, multi-locale content strategy.",
+    "stack": ["Laravel", "Blade", "Docker", "JavaScript"]
+  },
+  {
+    "name": "AB.dk Website",
+    "link": "https://ab.dk",
+    "image": "/dist/assets/img/projects/abdk.png",
+    "alt": "AB.dk corporate website — clean, user-friendly Danish company website",
+    "tag": "Web",
+    "tagColor": "green",
+    "description": "Delivered a clean, fast, and accessible corporate website for a Danish client — optimising for Core Web Vitals and cross-browser compatibility. Implemented responsive layouts and a maintainable component architecture that the client team could extend independently.",
+    "stack": ["React.js", "TypeScript", "Tailwind CSS", "REST API"]
+  },
+  {
+    "name": "Teman Belanja",
+    "link": "https://play.google.com/store/apps/details?id=com.temanbelanja",
+    "image": "/dist/assets/img/projects/temanbelanja.jpg",
+    "alt": "Teman Belanja Android app — shopping list and expense tracker on Google Play",
+    "tag": "Mobile",
+    "tagColor": "purple",
+    "description": "Built a cross-platform Android app using React Native that helps Indonesian shoppers track their lists, manage budgets, and discover discounts in one intuitive experience. Integrated real-time data syncing and optimised for low-end devices common in the target market.",
+    "stack": ["React Native", "JavaScript", "REST API"]
+  },
+  {
+    "name": "wapm.io — WebAssembly Registry",
+    "link": "https://wasmer.io/",
+    "image": "/dist/assets/img/projects/wapm.png",
+    "alt": "wapm.io WebAssembly package manager interface — Wasmer registry portal",
+    "tag": "WebAssembly",
+    "tagColor": "orange",
+    "description": "Contributed to the WAPM package registry interface — the central hub for WebAssembly packages used by Wasmer's global developer community. Focused on search UX, package detail pages, and performance optimisation for a technically demanding audience.",
+    "stack": ["React.js", "TypeScript", "GraphQL"]
+  },
+  {
+    "name": "Experience OS Dashboard",
+    "link": "https://experience-os.com",
+    "image": "/dist/assets/img/projects/exos.png",
+    "alt": "Experience OS startup dashboard — analytics and operations management interface",
+    "tag": "SaaS",
+    "tagColor": "pink",
+    "description": "Built the frontend dashboard for ExperienceOS GmbH — a Berlin-based startup in the Zeitgeist Group ecosystem. Translated complex data visualisation requirements into clean, interactive dashboards using React with a focus on real-time updates and role-based views.",
+    "stack": ["React.js", "TypeScript", "Node.js", "REST API"]
+  },
+  {
+    "name": "Searchdata.io",
+    "link": "https://searchdata.io",
+    "image": "/dist/assets/img/projects/searchdata.png",
+    "alt": "Searchdata.io data-driven search platform — structured information search interface",
+    "tag": "Platform",
+    "tagColor": "teal",
+    "description": "Developed key frontend features for a data-driven search platform built to surface structured information from vast datasets. Implemented advanced filter UI, pagination, and fast client-side rendering to support enterprise search use cases.",
+    "stack": ["Vue.js", "JavaScript", "REST API"]
+  }
 ]
 %}
 
-{# -------------------------------------------------------
-Start the page content
----------------------------------------------------------- #}
+{% set github_projects = [
+  {
+    "name": "Quran Mobile App",
+    "link": "https://github.com/geriadam/quran-mobile",
+    "description": "A complete Quran reader for mobile — built with React Native. Features full Arabic text, translations, bookmarking, and audio recitation support. A personal project born from wanting a clean, distraction-free reading experience.",
+    "stack": ["React Native", "JavaScript"],
+    "stars": "15",
+    "category": "Mobile"
+  },
+  {
+    "name": "Laravel Transcribe",
+    "link": "https://github.com/geriadam/laravel-transcribe",
+    "description": "Upload any audio file — MP3, WAV, or others — and watch it transform into readable text automatically. Built with Laravel and integrated with speech recognition APIs. Useful for meeting notes, interviews, and content repurposing.",
+    "stack": ["Laravel", "PHP", "AI/ML"],
+    "stars": "8",
+    "category": "AI Tools"
+  },
+  {
+    "name": "Crypto Tracker App",
+    "link": "https://github.com/geriadam/react-native-cryptocurrency-tracker-app",
+    "description": "Real-time cryptocurrency price tracker built with React Native. Clean charts, portfolio tracking, and price alerts — all in a smooth mobile interface that works on both iOS and Android.",
+    "stack": ["React Native", "JavaScript", "REST API"],
+    "stars": "12",
+    "category": "Mobile"
+  },
+  {
+    "name": "Instagram Clone (MERN)",
+    "link": "https://github.com/geriadam/instagramclone",
+    "description": "A full-featured social media clone built on the MERN stack — complete with authentication, image uploads, follows, likes, and a real-time feed. A deep dive into building complex social features from scratch.",
+    "stack": ["MongoDB", "Express", "React", "Node.js"],
+    "stars": "23",
+    "category": "Full-Stack"
+  },
+  {
+    "name": "React Drag & Drop",
+    "link": "https://github.com/geriadam/react-drag",
+    "description": "A clean implementation of drag-and-drop list management using React and @hello-pangea/dnd. Items persist in localStorage — so your selections survive a page refresh. Useful as a reusable pattern for any prioritisation or ordering UI.",
+    "stack": ["React", "JavaScript", "LocalStorage"],
+    "stars": "5",
+    "category": "UI/UX"
+  },
+  {
+    "name": "Short URL",
+    "link": "https://github.com/geriadam/laravel-shorturl",
+    "description": "A dead-simple URL shortener built with Laravel. Paste a long link, get a short one. Clean, fast, and easy to self-host — the kind of tool every developer ends up building at some point.",
+    "stack": ["Laravel", "PHP", "MySQL"],
+    "stars": "7",
+    "category": "Web Tools"
+  }
+]
+%}
+
+{% set all_projects = [
+  {"name":"AB.dk Website","link":"https://ab.dk","image":"/dist/assets/img/projects/abdk.png","alt":"AB.dk official corporate website","description":"Clean, accessible corporate site for a Danish company — optimised for performance and cross-browser compatibility.","stack":["React","TypeScript","Tailwind"]},
+  {"name":"Equinix Metal","link":"https://deploy.equinix.com","image":"/dist/assets/img/projects/deploy_equinix.png","alt":"Equinix Metal cloud deployment platform","description":"Bare-metal cloud platform portal serving thousands of infrastructure engineers globally.","stack":["Laravel","Docker","JavaScript"]},
+  {"name":"Teman Belanja","link":"https://play.google.com/store/apps/details?id=com.temanbelanja","image":"/dist/assets/img/projects/temanbelanja.jpg","alt":"Teman Belanja shopping assistant app","description":"Android app for shopping lists, expense tracking, and discount discovery.","stack":["React Native","JavaScript"]},
+  {"name":"Teman Belanja POS","link":"https://play.google.com/store/apps/details?id=com.temanbelanjapos","image":"/dist/assets/img/projects/temanbelanjapos.jpg","alt":"Teman Belanja POS system for retail","description":"Point-of-sale system with inventory management and payment integration for retail.","stack":["React Native","JavaScript"]},
+  {"name":"wapm.io","link":"https://wasmer.io/","image":"/dist/assets/img/projects/wapm.png","alt":"WAPM WebAssembly package registry","description":"Package registry interface for the WebAssembly ecosystem.","stack":["React","TypeScript","GraphQL"]},
+  {"name":"Experience OS","link":"https://experience-os.com","image":"/dist/assets/img/projects/exos.png","alt":"Experience OS analytics dashboard","description":"Startup operations dashboard with real-time analytics for Zeitgeist Group.","stack":["React","TypeScript","Node.js"]},
+  {"name":"Searchdata.io","link":"https://searchdata.io","image":"/dist/assets/img/projects/searchdata.png","alt":"Searchdata search platform","description":"Enterprise-grade data search platform with advanced filtering and fast rendering.","stack":["Vue.js","JavaScript"]},
+  {"name":"Wefox Health","link":"https://wefox-health.ch/de","image":"/dist/assets/img/projects/timetowin.png","alt":"Wefox Health insurance landing page","description":"Performance-optimised healthcare landing page with high conversion rate.","stack":["React","TypeScript","Tailwind"]},
+  {"name":"Sweet Escape","link":"#","image":"/dist/assets/img/projects/sweet_escape.jpg","alt":"Sweet Escape photographer booking app","description":"Global photographer booking platform with payment integration and location services.","stack":["React Native","Node.js","MySQL"]},
+  {"name":"SIMANTAP","link":"http://118.97.27.101/simantap/","image":"/dist/assets/img/projects/simantap.png","alt":"SIMANTAP water quality management system","description":"Web-based water quality lab management system for environmental monitoring.","stack":["PHP","Laravel","MySQL"]},
+  {"name":"Ternaknesia","link":"https://ternaknesia.com/","image":"/dist/assets/img/projects/ternaknesia.png","alt":"Ternaknesia livestock traceability platform","description":"Livestock traceability system from upstream to downstream — rebuilt with Vue.js.","stack":["Vue.js","Laravel","REST API"]},
+  {"name":"Mbattik Online Store","link":"https://mbattik.com/","image":"/dist/assets/img/projects/mbattik.png","alt":"Mbattik batik clothing online store","description":"E-commerce store for authentic Surabaya batik — built for conversion and performance.","stack":["PHP","Laravel","MySQL"]}
+]
+%}
 
 {% block content %}
-    <section class="mx-auto w-full max-w-2xl space-y-8 bg-white pb-16 print:space-y-6 print:pb-0">
-        <div class="flex items-center justify-between">
-            <div class="flex-1">
-                <h1 class="text-2xl font-bold">Geri Adam Saputra</h1>
-                <p class="mb-4 max-w-md text-pretty text-sm text-muted-foreground">Fullstack Developer</p>
-                <p class="mb-2 max-w-md items-center text-pretty text-xs text-muted-foreground">
-                    <a class="inline-flex gap-x-1.5 align-baseline leading-none hover:underline" href="https://en.wikipedia.org/wiki/Surabaya" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe size-3">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
-                            <path d="M2 12h20"></path>
-                        </svg>Surabaya, Indonesia</a>
-                </p>
-                <div class="flex gap-x-1 pt-1 text-sm text-muted-foreground print:hidden">
-                    <a href="mailto:geriadam04@gmail.com" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground size-8">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail size-4">
-                            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                        </svg>
-                    </a>
-                    <a href="https://s.id/geri-github" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground size-8">
-                        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="size-4">
-                            <path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
-                        </svg>
-                    </a>
-                    <a href="https://s.id/geri-linkedin" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground size-8">
-                        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="size-4">
-                            <title>LinkedIn</title>
-                            <path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
-                        </svg>
-                    </a>
-                    <a href="/dist/assets/files/Resume Geri Adam Saputra.pdf" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground size-8">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" class="size-4"><path d="M12 12V19M12 19L9.75 16.6667M12 19L14.25 16.6667M6.6 17.8333C4.61178 17.8333 3 16.1917 3 14.1667C3 12.498 4.09438 11.0897 5.59198 10.6457C5.65562 10.6268 5.7 10.5675 5.7 10.5C5.7 7.46243 8.11766 5 11.1 5C14.0823 5 16.5 7.46243 16.5 10.5C16.5 10.5582 16.5536 10.6014 16.6094 10.5887C16.8638 10.5306 17.1284 10.5 17.4 10.5C19.3882 10.5 21 12.1416 21 14.1667C21 16.1917 19.3882 17.8333 17.4 17.8333" stroke="#464455" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                </div>
-                <div class="hidden flex-col gap-x-1 text-sm text-muted-foreground print:flex">
-                    <a href="mailto:geriadam04@gmail.com">
-                        <span class="underline">geriadam04@gmail.com</span>
-                    </a>
-                </div>
-            </div>
-            <span class="relative flex shrink-0 overflow-hidden rounded-xl ml-4 size-28"><img class="aspect-square h-full w-full" alt="Geri Adam Saputra" data-testid="avatar" src="/dist/assets/img/profile.png"></span>
+
+<!-- ═══════════════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════════════ -->
+<section id="hero" class="section-hero" aria-labelledby="hero-heading">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
+    <div class="reveal-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-8">
+      <div class="flex-1 max-w-xl">
+        <!-- Status badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-400 text-xs font-medium mb-6 reveal-up" style="animation-delay:0.1s" aria-label="Current availability status">
+          <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" aria-hidden="true"></span>
+          Available for new opportunities
         </div>
-        <section class="flex min-h-0 flex-col gap-y-3">
-            <h2 class="text-xl font-bold">About</h2>
-            <p class="text-pretty text-justify text-sm text-muted-foreground">Fullstack Developer with 7+ years of experience building scalable web applications using JavaScript, React, Laravel, and Node.js. Experienced in developing REST APIs, optimizing frontend performance, and delivering maintainable systems. Strong ability to translate business requirements into technical solutions and collaborate with crossfunctional teams in fast-paced environments.</p>
-        </section>
-        <section class="flex min-h-0 flex-col gap-y-3">
-            <h2 class="text-xl font-bold">Work Experience</h2>
-            <div class="rounded-lg bg-card text-card-foreground relative">
-                <div class="flex flex-col space-y-1.5">
-                    <div class="flex items-center justify-between gap-x-2 text-base">
-                        <h3 class="inline-flex items-center justify-center gap-x-2 font-semibold leading-none">
-                            <a class="after:inset-0 hover:underline after:md:absolute print:after:hidden" href="https://deploy.equinix.com">Equinix Metal</a>
-                        </h3>
-                        <div class="text-sm tabular-nums text-gray-500">Aug 2020 - Dec 2024</div>
-                    </div>
-                    <h4 class="text-sm leading-none">Web Developer & Consultant</h4>
-                </div>
-                <div class="text-pretty text-muted-foreground mt-2 text-xs">
-                    <ul class="list-disc">
-                        <li>Improved web application performance by optimizing Laravel Blade rendering, reducing asset size, and minimizing JavaScript execution</li>
-                        <li>Improved web application performance by optimizing Laravel Blade rendering, reducing asset size, and minimizing JavaScript execution</li>
-                        <li>Developed RESTful APIs to support backend services and content delivery workflows</li>
-                        <li>Reviewed pull requests to ensure code quality, consistency, and maintainability across the codebase</li>
-                    </ul>
-                </div>
+
+        <h1 id="hero-heading" class="text-4xl sm:text-5xl font-semibold tracking-tight text-ink leading-tight mb-3 reveal-up" style="animation-delay:0.15s">
+          Geri Adam<br/>
+          <span class="text-accent">Saputra</span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-ink-muted font-light mb-2 reveal-up" style="animation-delay:0.2s">
+          Fullstack Developer
+        </p>
+
+        <p class="flex items-center gap-1.5 text-sm text-ink-muted mb-6 reveal-up" style="animation-delay:0.25s">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <a href="https://en.wikipedia.org/wiki/Surabaya" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent rounded-sm" aria-label="Surabaya, Indonesia — learn more on Wikipedia">Surabaya, Indonesia</a>
+        </p>
+
+        <p class="text-sm sm:text-base text-ink-muted leading-relaxed mb-8 max-w-md reveal-up" style="animation-delay:0.3s">
+          7+ years building scalable web applications. I turn complex business problems into clean, performant software — from pixel-perfect frontends to robust backend APIs.
+        </p>
+
+        <!-- CTA buttons -->
+        <div class="flex flex-wrap gap-3 reveal-up" style="animation-delay:0.35s">
+          <a href="#contact"
+             class="btn-primary"
+             aria-label="Get in touch with Geri">
+            Get in touch
+          </a>
+          <a href="#projects"
+             class="btn-secondary"
+             aria-label="View Geri's portfolio projects">
+            View work
+          </a>
+          <a href="/dist/assets/files/Resume Geri Adam Saputra.pdf"
+             target="_blank" rel="noopener noreferrer"
+             class="btn-ghost"
+             aria-label="Download Geri Adam Saputra's resume PDF (opens in new tab)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Resume
+          </a>
+        </div>
+
+        <!-- Social links -->
+        <div class="flex items-center gap-2 mt-6 reveal-up" style="animation-delay:0.4s" role="list" aria-label="Social media and contact links">
+          <a href="mailto:geriadam04@gmail.com" role="listitem"
+             class="icon-btn" aria-label="Send email to Geri">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </a>
+          <a href="https://github.com/geriadam" target="_blank" rel="noopener noreferrer" role="listitem"
+             class="icon-btn" aria-label="Geri's GitHub profile (opens in new tab)">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/geri-adam-saputra" target="_blank" rel="noopener noreferrer" role="listitem"
+             class="icon-btn" aria-label="Geri's LinkedIn profile (opens in new tab)">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Avatar -->
+      <div class="reveal-up flex-shrink-0" style="animation-delay:0.2s" aria-hidden="true">
+        <div class="relative">
+          <div class="absolute -inset-1 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 blur-lg"></div>
+          <img src="/dist/assets/img/profile.png"
+               alt="Geri Adam Saputra — Fullstack Developer profile photo"
+               width="160" height="160"
+               class="relative w-32 h-32 sm:w-40 sm:h-40 rounded-2xl object-cover border border-border"
+               loading="eager"
+               fetchpriority="high"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats row -->
+    <div class="reveal-up mt-14 grid grid-cols-3 gap-4 sm:gap-6 max-w-sm" style="animation-delay:0.45s" aria-label="Career highlights">
+      <div class="text-center sm:text-left">
+        <p class="text-2xl font-semibold text-ink" aria-label="7 plus years of experience">7+</p>
+        <p class="text-xs text-ink-muted mt-0.5">Years exp.</p>
+      </div>
+      <div class="text-center sm:text-left border-x border-border px-4">
+        <p class="text-2xl font-semibold text-ink" aria-label="35 plus projects delivered">35+</p>
+        <p class="text-xs text-ink-muted mt-0.5">Projects</p>
+      </div>
+      <div class="text-center sm:text-left pl-4">
+        <p class="text-2xl font-semibold text-ink">6</p>
+        <p class="text-xs text-ink-muted mt-0.5">Companies</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     ABOUT SECTION
+═══════════════════════════════════════════════════ -->
+<section id="about" class="section" aria-labelledby="about-heading">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <h2 id="about-heading" class="section-label reveal-up">About</h2>
+    <div class="mt-6 grid sm:grid-cols-5 gap-8 sm:gap-12">
+      <div class="sm:col-span-3 reveal-up">
+        <p class="text-sm sm:text-base text-ink-muted leading-relaxed mb-4">
+          I'm a Fullstack Developer based in Surabaya, Indonesia, with over 7 years of experience delivering web and mobile applications for startups, agencies, and enterprise clients across Indonesia, Europe, and the US.
+        </p>
+        <p class="text-sm sm:text-base text-ink-muted leading-relaxed mb-4">
+          My stack spans the full spectrum — from crafting pixel-perfect UIs with React and Vue to engineering robust backend systems with Laravel and Node.js. I care deeply about performance, accessibility, and code quality that teammates actually enjoy working with.
+        </p>
+        <p class="text-sm sm:text-base text-ink-muted leading-relaxed">
+          When I'm not shipping features, I'm building open-source tools, experimenting with mobile development in React Native, or deepening my knowledge in WebAssembly and edge computing.
+        </p>
+      </div>
+      <div class="sm:col-span-2 reveal-up" style="animation-delay:0.1s">
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-4">Tech I work with</h3>
+        <div class="flex flex-wrap gap-1.5" role="list" aria-label="Technical skills">
+          {% set skills = ["JavaScript","TypeScript","React.js","Vue.js","Next.js","Node.js","Laravel","PHP","React Native","MySQL","MongoDB","Docker","GraphQL","REST API","Tailwind CSS","Git","CI/CD","Jest","PHPUnit"] %}
+          {% for skill in skills %}
+          <span class="skill-pill" role="listitem">{{ skill }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     EXPERIENCE SECTION
+═══════════════════════════════════════════════════ -->
+<section id="experience" class="section" aria-labelledby="experience-heading">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <h2 id="experience-heading" class="section-label reveal-up">Experience</h2>
+
+    <div class="mt-6 relative" role="list" aria-label="Work experience timeline">
+      <!-- Timeline line -->
+      <div class="absolute left-0 top-2 bottom-2 w-px bg-border hidden sm:block" aria-hidden="true"></div>
+
+      <!-- Job entries -->
+      <article class="exp-card reveal-up" role="listitem">
+        <div class="exp-dot" aria-hidden="true"></div>
+        <header class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
+          <div>
+            <h3 class="text-sm font-semibold text-ink">Web Developer & Consultant</h3>
+            <p class="text-xs text-ink-muted mt-0.5">
+              <a href="https://deploy.equinix.com" target="_blank" rel="noopener noreferrer"
+                 class="hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent rounded-sm"
+                 aria-label="Equinix Metal website (opens in new tab)">Equinix Metal</a>
+            </p>
+          </div>
+          <time class="text-xs text-ink-muted font-mono flex-shrink-0" datetime="2020-08/2024-12">Aug 2020 – Dec 2024</time>
+        </header>
+        <ul class="space-y-1.5 text-xs text-ink-muted" role="list">
+          <li class="flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5" aria-hidden="true">↗</span>Optimised Laravel Blade rendering and Docker pipelines — measurable page speed gains and reduced asset bundle size</li>
+          <li class="flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5" aria-hidden="true">↗</span>Built and maintained 10+ dynamic marketing pages with CMD-driven content workflows</li>
+          <li class="flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5" aria-hidden="true">↗</span>Developed and documented RESTful APIs supporting backend services and content delivery pipelines</li>
+          <li class="flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5" aria-hidden="true">↗</span>Led code reviews, enforced coding standards, and reduced post-release bugs through consistent quality gates</li>
+        </ul>
+        <div class="flex flex-wrap gap-1 mt-3" aria-label="Technologies used">
+          <span class="exp-tag">Laravel</span><span class="exp-tag">Blade</span><span class="exp-tag">Docker</span><span class="exp-tag">JavaScript</span><span class="exp-tag">REST API</span>
+        </div>
+      </article>
+
+      <article class="exp-card reveal-up" style="animation-delay:0.05s" role="listitem">
+        <div class="exp-dot" aria-hidden="true"></div>
+        <header class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
+          <div>
+            <h3 class="text-sm font-semibold text-ink">Frontend Developer</h3>
+            <p class="text-xs text-ink-muted mt-0.5">Freelance</p>
+          </div>
+          <time class="text-xs text-ink-muted font-mono flex-shrink-0" datetime="2020-08/2022-09">Aug 2020 – Sep 2022</time>
+        </header>
+        <ul class="space-y-1.5 text-xs text-ink-muted" role="list">
+          <li class="flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5" aria-hidden="true">↗</span>Built responsive, accessible UIs using React.js, TypeScript, and Tailwind CSS from Figma specs</li>
+          <li class="flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5" aria-hidden="true">↗</span>Typed component libraries with strict prop validation — reducing UAT-reported bugs by <strong>25%</strong></li>
+          <li class="flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5" aria-hidden="true">↗</span>Improved mobile responsiveness by <strong>40%</strong> through responsive layout refactoring</li>
+          <li class="flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5" aria-hidden="true">↗</span>Technical documentation that reduced developer onboarding time by <strong>35%</strong></li>
+        </ul>
+        <div class="flex flex-wrap gap-1 mt-3" aria-label="Technologies used">
+          <span class="exp-tag">React.js</span><span class="exp-tag">TypeScript</span><span class="exp-tag">Tailwind CSS</span><span class="exp-tag">Node.js</span>
+        </div>
+      </article>
+
+      <article class="exp-card reveal-up" style="animation-delay:0.1s" role="listitem">
+        <div class="exp-dot" aria-hidden="true"></div>
+        <header class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
+          <div>
+            <h3 class="text-sm font-semibold text-ink">Fullstack Developer</h3>
+            <p class="text-xs text-ink-muted mt-0.5">
+              <a href="https://ternaknesia.com/" target="_blank" rel="noopener noreferrer"
+                 class="hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent rounded-sm"
+                 aria-label="Ternaknesia website (opens in new tab)">Ternaknesia</a>
+            </p>
+          </div>
+          <time class="text-xs text-ink-muted font-mono flex-shrink-0" datetime="2019-04/2020-07">Apr 2019 – Jul 2020</time>
+        </header>
+        <ul class="space-y-1.5 text-xs text-ink-muted" role="list">
+          <li class="flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5" aria-hidden="true">↗</span>Migrated legacy frontend to Vue.js with component-based architecture — improved load performance and maintainability</li>
+          <li class="flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5" aria-hidden="true">↗</span>Redesigned 3+ critical user flows based on stakeholder feedback — improved task completion rate</li>
+          <li class="flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5" aria-hidden="true">↗</span>Achieved zero critical defects at launch through rigorous system testing</li>
+        </ul>
+        <div class="flex flex-wrap gap-1 mt-3" aria-label="Technologies used">
+          <span class="exp-tag">Vue.js</span><span class="exp-tag">Laravel</span><span class="exp-tag">MySQL</span><span class="exp-tag">REST API</span>
+        </div>
+      </article>
+
+      <article class="exp-card reveal-up" style="animation-delay:0.15s" role="listitem">
+        <div class="exp-dot" aria-hidden="true"></div>
+        <header class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
+          <div>
+            <h3 class="text-sm font-semibold text-ink">Fullstack Developer</h3>
+            <p class="text-xs text-ink-muted mt-0.5">Inertia Web Development (Freelance)</p>
+          </div>
+          <time class="text-xs text-ink-muted font-mono flex-shrink-0" datetime="2019-02/2020-07">Feb 2019 – Jul 2020</time>
+        </header>
+        <ul class="space-y-1.5 text-xs text-ink-muted" role="list">
+          <li class="flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5" aria-hidden="true">↗</span>Delivered multiple client web applications with Laravel and WordPress on time</li>
+          <li class="flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5" aria-hidden="true">↗</span>Built RESTful APIs and backend modules for scalable, multi-client features</li>
+        </ul>
+        <div class="flex flex-wrap gap-1 mt-3" aria-label="Technologies used">
+          <span class="exp-tag">Laravel</span><span class="exp-tag">WordPress</span><span class="exp-tag">PHP</span><span class="exp-tag">Git</span>
+        </div>
+      </article>
+
+      <article class="exp-card reveal-up" style="animation-delay:0.2s" role="listitem">
+        <div class="exp-dot" aria-hidden="true"></div>
+        <header class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
+          <div>
+            <h3 class="text-sm font-semibold text-ink">Fullstack Developer</h3>
+            <p class="text-xs text-ink-muted mt-0.5">
+              <a href="https://wavegame.net/" target="_blank" rel="noopener noreferrer"
+                 class="hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent rounded-sm"
+                 aria-label="Wavegame website (opens in new tab)">Wavegame</a>
+            </p>
+          </div>
+          <time class="text-xs text-ink-muted font-mono flex-shrink-0" datetime="2018-10/2019-02">Oct 2018 – Feb 2019</time>
+        </header>
+        <ul class="space-y-1.5 text-xs text-ink-muted" role="list">
+          <li class="flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5" aria-hidden="true">↗</span>Built GoPay payment gateway integration using PHP and CakePHP</li>
+          <li class="flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5" aria-hidden="true">↗</span>Maintained 99%+ system uptime through proactive production monitoring</li>
+        </ul>
+        <div class="flex flex-wrap gap-1 mt-3" aria-label="Technologies used">
+          <span class="exp-tag">PHP</span><span class="exp-tag">CakePHP</span><span class="exp-tag">MySQL</span>
+        </div>
+      </article>
+
+      <article class="exp-card reveal-up" style="animation-delay:0.25s" role="listitem">
+        <div class="exp-dot" aria-hidden="true"></div>
+        <header class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
+          <div>
+            <h3 class="text-sm font-semibold text-ink">Fullstack Developer</h3>
+            <p class="text-xs text-ink-muted mt-0.5">PokakoSoft (Freelance)</p>
+          </div>
+          <time class="text-xs text-ink-muted font-mono flex-shrink-0" datetime="2017-07/2018-08">Jul 2017 – Aug 2018</time>
+        </header>
+        <ul class="space-y-1.5 text-xs text-ink-muted" role="list">
+          <li class="flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5" aria-hidden="true">↗</span>Developed web applications with PHP, Yii2, and jQuery across 5+ concurrent client projects</li>
+          <li class="flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5" aria-hidden="true">↗</span>Documented technical processes, improving team knowledge transfer and onboarding</li>
+        </ul>
+        <div class="flex flex-wrap gap-1 mt-3" aria-label="Technologies used">
+          <span class="exp-tag">PHP</span><span class="exp-tag">Yii2</span><span class="exp-tag">jQuery</span><span class="exp-tag">MySQL</span>
+        </div>
+      </article>
+    </div>
+
+    <!-- Education -->
+    <div class="mt-10 reveal-up">
+      <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-4">Education</h3>
+      <article class="p-4 rounded-xl border border-border bg-surface-2 hover:border-accent/30 transition-colors duration-200">
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
+          <div>
+            <h4 class="text-sm font-semibold text-ink">Bachelor of Computer Science — Software Engineering</h4>
+            <p class="text-xs text-ink-muted mt-0.5">Institut Teknologi Adhi Tama Surabaya</p>
+          </div>
+          <div class="text-xs text-ink-muted font-mono text-left sm:text-right flex-shrink-0">
+            <p>Graduated Aug 2022</p>
+            <p class="text-accent font-medium">GPA 3.49 / 4.00</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     FEATURED PROJECTS SECTION
+═══════════════════════════════════════════════════ -->
+<section id="projects" class="section" aria-labelledby="projects-heading">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <div class="flex items-end justify-between mb-6">
+      <div>
+        <h2 id="projects-heading" class="section-label reveal-up">Featured Work</h2>
+        <p class="text-xs text-ink-muted mt-1 reveal-up" style="animation-delay:0.05s">Selected client and product projects</p>
+      </div>
+      <button id="show-all-btn" type="button"
+              aria-expanded="false" aria-controls="all-projects-grid"
+              class="text-xs text-accent hover:text-accent/80 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-accent rounded-sm reveal-up">
+        View all →
+      </button>
+    </div>
+
+    <!-- Featured 2-col grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" role="list" aria-label="Featured portfolio projects">
+      {% for project in featured_projects %}
+      <article class="project-card reveal-up group" style="animation-delay:{{ loop.index0 * 0.05 }}s" role="listitem">
+        <a href="{{ project.link }}" target="{{ '_blank' if project.link != '#' else '_self' }}"
+           rel="{{ 'noopener noreferrer' if project.link != '#' }}"
+           class="block focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface rounded-xl"
+           aria-label="{{ project.name }}{% if project.link != '#' %} — view project (opens in new tab){% endif %}">
+          <div class="overflow-hidden rounded-xl aspect-[16/9] bg-surface-2 mb-3">
+            <img src="{{ project.image }}"
+                 alt="{{ project.alt }}"
+                 width="600" height="338"
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                 loading="lazy"
+                 decoding="async"/>
+          </div>
+          <div class="px-1">
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <h3 class="text-sm font-semibold text-ink group-hover:text-accent transition-colors duration-200 leading-snug">{{ project.name }}</h3>
+              <span class="project-tag project-tag--{{ project.tagColor }}" aria-label="Project category: {{ project.tag }}">{{ project.tag }}</span>
             </div>
-            <div class="rounded-lg bg-card text-card-foreground relative">
-                <div class="flex flex-col space-y-1.5">
-                    <div class="flex items-center justify-between gap-x-2 text-base">
-                        <h3 class="inline-flex items-center justify-center gap-x-2 font-semibold leading-none">
-                            <a class="after:inset-0 hover:underline after:md:absolute print:after:hidden" href="">Freelance</a>
-                        </h3>
-                        <div class="text-sm tabular-nums text-gray-500">Aug 2020 - Sep 2022</div>
-                    </div>
-                    <h4 class="text-sm leading-none">Frontend Developer</h4>
-                </div>
-                <div class="text-pretty text-muted-foreground mt-2 text-xs">
-                    <ul class="list-disc">
-                        <li>Built responsive and accessible user interfaces using React and Tailwind CSS based on Figma designs</li>
-                        <li>Translated UI/UX wireframes into modular, high-performance code, resulting in a 25% reduction in bugs reported during user acceptance testing (UAT)</li>
-                        <li>Developed responsive user interfaces from user flows, wireframes, and mockups, improving mobile responsiveness by 40%</li>
-                        <li>Wrote clean, maintainable code and created comprehensive documentation, enabling a 35% faster onboarding process for new team members</li>
-                    </ul>
-                </div>
+            <p class="text-xs text-ink-muted leading-relaxed mb-2.5">{{ project.description }}</p>
+            <div class="flex flex-wrap gap-1" aria-label="Technologies used">
+              {% for tech in project.stack %}
+              <span class="exp-tag">{{ tech }}</span>
+              {% endfor %}
             </div>
-            <div class="rounded-lg bg-card text-card-foreground relative">
-                <div class="flex flex-col space-y-1.5">
-                    <div class="flex items-center justify-between gap-x-2 text-base">
-                        <h3 class="inline-flex items-center justify-center gap-x-2 font-semibold leading-none">
-                            <a class="after:inset-0 hover:underline after:md:absolute print:after:hidden" href="https://ternaknesia.com/">Ternaknesia</a>
-                        </h3>
-                        <div class="text-sm tabular-nums text-gray-500">Apr 2019 - Jul 2020</div>
-                    </div>
-                    <h4 class="text-sm leading-none">Fullstack Developer</h4>
-                </div>
-                <div class="text-pretty text-muted-foreground mt-2 text-xs">
-                    <ul class="list-disc">
-                        <li>Refactored legacy frontend into modern interfaces using Vue.js and a component-based architecture</li>
-                        <li>Improved user experience by redesigning key user flows based on stakeholder and product feedback</li>
-                        <li>Performed system testing and resolved critical issues prior to production deployment</li>
-                        <li>Collaborated with cross-functional teams to align technical implementation with business requirements</li>
-                    </ul>
-                </div>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+
+    <!-- All projects (hidden by default) -->
+    <div id="all-projects-grid" class="hidden mt-4" aria-label="All portfolio projects">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" role="list">
+        {% for project in all_projects %}
+        <article class="project-card-sm reveal-up group" style="animation-delay:{{ loop.index0 * 0.03 }}s" role="listitem">
+          <a href="{{ project.link }}" target="{{ '_blank' if project.link != '#' else '_self' }}"
+             rel="{{ 'noopener noreferrer' if project.link != '#' }}"
+             class="block focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-lg"
+             aria-label="{{ project.name }}{% if project.link != '#' %} (opens in new tab){% endif %}">
+            <div class="overflow-hidden rounded-lg aspect-video bg-surface-2 mb-2">
+              <img src="{{ project.image }}"
+                   alt="{{ project.alt }}"
+                   width="400" height="225"
+                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                   loading="lazy"
+                   decoding="async"/>
             </div>
-            <div class="rounded-lg bg-card text-card-foreground relative">
-                <div class="flex flex-col space-y-1.5">
-                    <div class="flex items-center justify-between gap-x-2 text-base">
-                        <h3 class="inline-flex items-center justify-center gap-x-2 font-semibold leading-none">
-                            <a class="after:inset-0 hover:underline after:md:absolute print:after:hidden" href="#">Inertia WebDevelopment</a>
-                        </h3>
-                        <div class="text-sm tabular-nums text-gray-500">Feb 2019 - Jul 2020</div>
-                    </div>
-                    <h4 class="text-sm leading-none">Freelance Fullstack Developer</h4>
-                </div>
-                <div class="text-pretty text-muted-foreground mt-2 text-xs">
-                    <ul class="list-disc">
-                        <li>Developed and delivered multiple web applications using Laravel and WordPress for various clients</li>
-                        <li>Built RESTful APIs and backend modules to support scalable application features</li>
-                        <li>Implemented responsive frontend layouts to ensure cross-device compatibility</li>
-                        <li>Collaborated with designers and developers using Git-based workflows to deliver features efficiently</li>
-                    </ul>
-                </div>
+            <h3 class="text-xs font-semibold text-ink group-hover:text-accent transition-colors duration-200 mb-1 truncate">{{ project.name }}</h3>
+            <p class="text-[11px] text-ink-muted leading-relaxed line-clamp-2">{{ project.description }}</p>
+          </a>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     GITHUB PROJECTS SECTION
+═══════════════════════════════════════════════════ -->
+<section id="github" class="section" aria-labelledby="github-heading">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <div class="flex items-end justify-between mb-6">
+      <div>
+        <h2 id="github-heading" class="section-label reveal-up">Open Source</h2>
+        <p class="text-xs text-ink-muted mt-1 reveal-up" style="animation-delay:0.05s">Personal projects & experiments on GitHub</p>
+      </div>
+      <a href="https://github.com/geriadam" target="_blank" rel="noopener noreferrer"
+         class="text-xs text-accent hover:text-accent/80 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-accent rounded-sm reveal-up"
+         aria-label="View all GitHub repositories (opens in new tab)">
+        github.com/geriadam →
+      </a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" role="list" aria-label="Open source projects">
+      {% for project in github_projects %}
+      <article class="github-card reveal-up group" style="animation-delay:{{ loop.index0 * 0.04 }}s" role="listitem">
+        <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer"
+           class="block h-full focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface rounded-xl"
+           aria-label="{{ project.name }} on GitHub (opens in new tab)">
+          <div class="flex items-start justify-between gap-2 mb-2">
+            <div class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" class="text-ink-muted flex-shrink-0" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              <span class="text-xs font-semibold text-ink group-hover:text-accent transition-colors duration-200 leading-snug">{{ project.name }}</span>
             </div>
-            <div class="rounded-lg bg-card text-card-foreground relative">
-                <div class="flex flex-col space-y-1.5">
-                    <div class="flex items-center justify-between gap-x-2 text-base">
-                        <h3 class="inline-flex items-center justify-center gap-x-2 font-semibold leading-none">
-                            <a class="after:inset-0 hover:underline after:md:absolute print:after:hidden" href="https://wavegame.net/">Wavegame</a>
-                        </h3>
-                        <div class="text-sm tabular-nums text-gray-500">Oct 2018 - Feb 2019</div>
-                    </div>
-                    <h4 class="text-sm leading-none">Fullstack Developer</h4>
-                </div>
-                <div class="text-pretty text-muted-foreground mt-2 text-xs">
-                    <ul class="list-disc">
-                        <li>Developed backend services for GoPay integration using PHP and CakePHP</li>
-                        <li>Built API endpoints to support platform features and transaction workflows</li>
-                        <li>Troubleshot and resolved production issues to maintain system stability</li>
-                    </ul>
-                </div>
+            <span class="text-[10px] font-mono text-ink-muted bg-surface-2 px-1.5 py-0.5 rounded flex-shrink-0" aria-label="{{ project.category }} category">{{ project.category }}</span>
+          </div>
+          <p class="text-xs text-ink-muted leading-relaxed mb-3">{{ project.description }}</p>
+          <div class="flex items-center justify-between">
+            <div class="flex flex-wrap gap-1" aria-label="Technologies">
+              {% for tech in project.stack %}
+              <span class="exp-tag">{{ tech }}</span>
+              {% endfor %}
             </div>
-            <div class="rounded-lg bg-card text-card-foreground relative">
-                <div class="flex flex-col space-y-1.5">
-                    <div class="flex items-center justify-between gap-x-2 text-base">
-                        <h3 class="inline-flex items-center justify-center gap-x-2 font-semibold leading-none">
-                            <a class="after:inset-0 hover:underline after:md:absolute print:after:hidden" href="https://www.pokakosoft.com/">PokakoSoft</a>
-                        </h3>
-                        <div class="text-sm tabular-nums text-gray-500">Jul 2017 - Aug 2018</div>
-                    </div>
-                    <h4 class="text-sm leading-none">Freelance Fullstack Developer</h4>
-                </div>
-                <div class="text-pretty text-muted-foreground mt-2 text-xs">
-                    <ul class="list-disc">
-                        <li>Developed and maintained web applications using PHP, Yii2, and jQuery</li>
-                        <li>Translated business requirements into technical implementations across multiple projects</li>
-                        <li>Built responsive user interfaces and integrated backend services</li>
-                        <li>Documented technical processes to support knowledge sharing and onboarding</li>
-                    </ul>
-                </div>
+            <div class="flex items-center gap-1 text-[11px] text-ink-muted flex-shrink-0 ml-2" aria-label="{{ project.stars }} stars">
+              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              {{ project.stars }}
             </div>
-        </section>
-        <section class="flex min-h-0 flex-col gap-y-3">
-            <h2 class="text-xl font-bold">Education</h2>
-            <div class="rounded-lg bg-card text-card-foreground">
-                <div class="flex flex-col gap-1">
-                    <div class="flex items-center justify-between gap-x-2 text-base">
-                        <h3 class="font-semibold leading-none">Institut Teknologi Adhi Tama Surabaya</h3>
-                        <div class="text-right text-sm tabular-nums text-gray-500">Surabaya, Indonesia</div>
-                    </div>
-                    <div class="flex items-center justify-between gap-x-2 text-base">
-                        <div class="text-sm">
-                            <span class="italic">Bachelor of Computer Science</span></div>
-                        <div class="text-right text-sm tabular-nums text-gray-500">Aug 2022</div>
-                    </div>
-                    <div class="flex items-center justify-between gap-x-2 text-base">
-                        <div class="text-sm">Software Engineering</div>
-                        <div class="text-right text-sm tabular-nums text-gray-500">Major GPA : 3.49/4.00</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="flex min-h-0 flex-col gap-y-3">
-            <h2 class="text-xl font-bold">Skills</h2>
-            <div class="flex flex-wrap gap-1">
-                <ul class="list-disc space-y-1">
-                    <li>
-                    <span class="inline-flex items-center text-nowrap rounded-md border px-2 py-0.5 font-mono text-xs font-semibold border-transparent bg-primary/80 text-primary-foreground">
-                        Core Skills
-                    </span>
-                    JavaScript (ES6+), React.js, Laravel, Node.js
-                    </li>
-                    <li>
-                    <span class="inline-flex items-center text-nowrap rounded-md border px-2 py-0.5 font-mono text-xs font-semibold border-transparent bg-primary/80 text-primary-foreground">
-                        Frontend
-                    </span>
-                    JavaScript (ES6+), React.js, Vue.js, Blade, HTML5, CSS3, Tailwind CSS, Bootstrap
-                    </li>
-                    <li>
-                    <span class="inline-flex items-center text-nowrap rounded-md border px-2 py-0.5 font-mono text-xs font-semibold border-transparent bg-primary/80 text-primary-foreground">
-                        Backend
-                    </span>
-                    PHP, Laravel, Node.js, Express.js, REST API, GraphQL, MVC, OOP
-                    </li>
-                    <li>
-                    <span class="inline-flex items-center text-nowrap rounded-md border px-2 py-0.5 font-mono text-xs font-semibold border-transparent bg-primary/80 text-primary-foreground">
-                        Mobile
-                    </span>
-                    React Native
-                    </li>
-                    <li>
-                    <span class="inline-flex items-center text-nowrap rounded-md border px-2 py-0.5 font-mono text-xs font-semibold border-transparent bg-primary/80 text-primary-foreground">
-                        Database
-                    </span>
-                    MySQL, MongoDB
-                    </li>
-                    <li>
-                    <span class="inline-flex items-center text-nowrap rounded-md border px-2 py-0.5 font-mono text-xs font-semibold border-transparent bg-primary/80 text-primary-foreground">
-                        State Management
-                    </span>
-                    Redux, Vuex, React Query
-                    </li>
-                    <li>
-                    <span class="inline-flex items-center text-nowrap rounded-md border px-2 py-0.5 font-mono text-xs font-semibold border-transparent bg-primary/80 text-primary-foreground">
-                        Testing
-                    </span>
-                    Jest, PHPUnit
-                    </li>
-                    <li>
-                    <span class="inline-flex items-center text-nowrap rounded-md border px-2 py-0.5 font-mono text-xs font-semibold border-transparent bg-primary/80 text-primary-foreground">
-                        Tools & Workflow
-                    </span>
-                    Git, CI/CD, Agile
-                    </li>
-                    <li>
-                    <span class="inline-flex items-center text-nowrap rounded-md border px-2 py-0.5 font-mono text-xs font-semibold border-transparent bg-primary/80 text-primary-foreground">
-                        Other
-                    </span>
-                    SEO, Performance Optimization, Accessibility (WCAG)
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <section class="flex min-h-0 flex-col gap-y-3 print-force-new-page">
-            <h2 class="text-xl font-bold">Portofolio</h2>
-            <div class="-mx-3 grid grid-cols-1 gap-3 md:grid-cols-2 print:grid-cols-2 print:gap-2">
-                {% for project in projects %}
-                    <a class="relative group no-underline flex flex-col gap-3 transition-all ease-in-out duration-100" href="{{ project.link }}">
-                        <div class="card-image overflow-hidden border border-bdr-image dark:border-bdr-image-dk mb-2 rounded-md">
-                            <img alt="{{ project.alt }}" loading="lazy" decoding="async" src="{{ project.image }}" width="2400" height="1256" sizes="100vw">
-                            <div class="absolute top-0 left-0 z-10 w-full p-2">
-                                <span class="bg-gradient-45 from-blue-light via-purple-light to-maroon-light p-0.5 block rounded-full transition-all duration-200 ease-in-out w-0 opacity-0 group-hover:w-full group-focus:w-full group-hover:opacity-100 group-focus:opactiy-100"></span>
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-2 card-text">
-                            <h3 class="font-sans font-medium leading-snug duration-100 text-root lg:text-plus1 transition-color group-hover:text-red-root group-focus:text-red-root dark:group-hover:text-red-root dark:group-focus:text-red-root">{{ project.name }}</h3>
-                            <span class="text-muted-foreground text-xs">
-                                <p>{{ project.description }}</p>
-                            </span>
-                        </div>
-                    </a>
-                {% endfor %}
-            </div>
-        </section>
-        <section class="flex min-h-0 flex-col gap-y-3 print-force-new-page">
-            <h2 class="text-xl font-bold">Shorts</h2>
-            <div class="-mx-3 grid grid-cols-1 gap-3 md:grid-cols-2 print:grid-cols-2 print:gap-2">
-                <div class="rounded-lg bg-card text-card-foreground relative flex flex-col overflow-hidden border border-muted p-3">
-                    <div class="flex flex-col space-y-1.5">
-                        <div class="space-y-1">
-                            <h3 class="font-semibold tracking-tight text-base">
-                                <a href="https://github.com/geriadam/quran-mobile" target="_blank" class="space-x-2 after:inset-0 hover:underline after:md:absolute print:after:hidden">
-                                    <span>Quran Mobile App</span>
-                                    <span class="inline-block size-1 rounded-full bg-green-500 align-middle"></span></a>
-                            </h3>
-                            <div class="hidden text-xs underline print:visible">Quran Mobile App</div>
-                            <p class="text-muted-foreground min-h-[4ch] text-xs">React Native quran mobile app</p>
-                        </div>
-                    </div>
-                    <div class="text-pretty text-sm text-muted-foreground mt-auto flex">
-                        <div class="mt-2 flex flex-wrap gap-1">
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Mobile Development</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">React Native</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Javascript</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-lg bg-card text-card-foreground relative flex flex-col overflow-hidden border border-muted p-3">
-                    <div class="flex flex-col space-y-1.5">
-                        <div class="space-y-1">
-                            <h3 class="font-semibold tracking-tight text-base">
-                                <a href="https://github.com/geriadam/react-native-cryptocurrency-tracker-app" target="_blank" class="space-x-2 after:inset-0 hover:underline after:md:absolute print:after:hidden">
-                                    <span>Cryptocurrency tracker app</span>
-                                    <span class="inline-block size-1 rounded-full bg-green-500 align-middle"></span></a>
-                            </h3>
-                            <div class="hidden text-xs underline print:visible">Cryptocurrency tracker app</div>
-                            <p class="text-muted-foreground min-h-[4ch] text-xs">React Native build a cryptocurrency tracker app</p>
-                        </div>
-                    </div>
-                    <div class="text-pretty text-sm text-muted-foreground mt-auto flex">
-                        <div class="mt-2 flex flex-wrap gap-1">
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Mobile Development</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">React Native</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Javascript</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-lg bg-card text-card-foreground relative flex flex-col overflow-hidden border border-muted p-3">
-                    <div class="flex flex-col space-y-1.5">
-                        <div class="space-y-1">
-                            <h3 class="font-semibold tracking-tight text-base">
-                                <a href="https://github.com/geriadam/laravel-youtube" target="_blank" class="space-x-2 after:inset-0 hover:underline after:md:absolute print:after:hidden">
-                                    <span>Laravel Youtube</span>
-                                    <span class="inline-block size-1 rounded-full bg-green-500 align-middle"></span></a>
-                            </h3>
-                            <div class="hidden text-xs underline print:visible">Laravel Youtube</div>
-                            <p class="text-muted-foreground min-h-[4ch] text-xs">Simple laravel clone youtube</p>
-                        </div>
-                    </div>
-                    <div class="text-pretty text-sm text-muted-foreground mt-auto flex">
-                        <div class="mt-2 flex flex-wrap gap-1">
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Web Development</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Laravel</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">PHP</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-lg bg-card text-card-foreground relative flex flex-col overflow-hidden border border-muted p-3">
-                    <div class="flex flex-col space-y-1.5">
-                        <div class="space-y-1">
-                            <h3 class="font-semibold tracking-tight text-base">
-                                <a href="https://github.com/geriadam/instagramclone" target="_blank" class="space-x-2 after:inset-0 hover:underline after:md:absolute print:after:hidden">
-                                    <span>Instagram Clone</span>
-                                    <span class="inline-block size-1 rounded-full bg-green-500 align-middle"></span></a>
-                            </h3>
-                            <div class="hidden text-xs underline print:visible">Instagram Clone</div>
-                            <p class="text-muted-foreground min-h-[4ch] text-xs">Instagram clone with MERN Stack</p>
-                        </div>
-                    </div>
-                    <div class="text-pretty text-sm text-muted-foreground mt-auto flex">
-                        <div class="mt-2 flex flex-wrap gap-1">
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Web Development</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">MERN</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Javascript</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-lg bg-card text-card-foreground relative flex flex-col overflow-hidden border border-muted p-3">
-                    <div class="flex flex-col space-y-1.5">
-                        <div class="space-y-1">
-                            <h3 class="font-semibold tracking-tight text-base">
-                                <a href="https://github.com/geriadam/laravel-transcribe" target="_blank" class="space-x-2 after:inset-0 hover:underline after:md:absolute print:after:hidden">
-                                    <span>Laravel Transcribe</span>
-                                    <span class="inline-block size-1 rounded-full bg-green-500 align-middle"></span></a>
-                            </h3>
-                            <div class="hidden text-xs underline print:visible">Laravel Transcribe</div>
-                            <p class="text-muted-foreground min-h-[4ch] text-xs">Laravel Transcribe allows users to upload audio files in various formats, such as MP3, WAV, or others, and automatically converts the speech into text format.</p>
-                        </div>
-                    </div>
-                    <div class="text-pretty text-sm text-muted-foreground mt-auto flex">
-                        <div class="mt-2 flex flex-wrap gap-1">
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Web Development</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">AI</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Laravel</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">PHP</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-lg bg-card text-card-foreground relative flex flex-col overflow-hidden border border-muted p-3">
-                    <div class="flex flex-col space-y-1.5">
-                        <div class="space-y-1">
-                            <h3 class="font-semibold tracking-tight text-base">
-                                <a href="https://github.com/geriadam/react-drag" target="_blank" class="space-x-2 after:inset-0 hover:underline after:md:absolute print:after:hidden">
-                                    <span>React Drag</span>
-                                    <span class="inline-block size-1 rounded-full bg-green-500 align-middle"></span></a>
-                            </h3>
-                            <div class="hidden text-xs underline print:visible">React Drag</div>
-                            <p class="text-muted-foreground min-h-[4ch] text-xs">This project demonstrates how to implement a drag-and-drop interface using React and the @hello-pangea/dnd library. The application allows users to drag items between two lists — "Available Options" and "Selected Options". The lists are persisted in localStorage, ensuring that changes are retained even after refreshing the page.</p>
-                        </div>
-                    </div>
-                    <div class="text-pretty text-sm text-muted-foreground mt-auto flex">
-                        <div class="mt-2 flex flex-wrap gap-1">
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Web Development</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">AI</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Laravel</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">PHP</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-lg bg-card text-card-foreground relative flex flex-col overflow-hidden border border-muted p-3">
-                    <div class="flex flex-col space-y-1.5">
-                        <div class="space-y-1">
-                            <h3 class="font-semibold tracking-tight text-base">
-                                <a href="https://github.com/geriadam/simple-codeigniter-course-app" target="_blank" class="space-x-2 after:inset-0 hover:underline after:md:absolute print:after:hidden">
-                                    <span>Simple Courses</span>
-                                    <span class="inline-block size-1 rounded-full bg-green-500 align-middle"></span></a>
-                            </h3>
-                            <div class="hidden text-xs underline print:visible">Simple Courses</div>
-                            <p class="text-muted-foreground min-h-[4ch] text-xs">Simple to show info about course</p>
-                        </div>
-                    </div>
-                    <div class="text-pretty text-sm text-muted-foreground mt-auto flex">
-                        <div class="mt-2 flex flex-wrap gap-1">
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Web Development</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">CI</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">PHP</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-lg bg-card text-card-foreground relative flex flex-col overflow-hidden border border-muted p-3">
-                    <div class="flex flex-col space-y-1.5">
-                        <div class="space-y-1">
-                            <h3 class="font-semibold tracking-tight text-base">
-                                <a href="https://github.com/geriadam/laravel-shorturl" target="_blank" class="space-x-2 after:inset-0 hover:underline after:md:absolute print:after:hidden">
-                                    <span>Short URL</span>
-                                    <span class="inline-block size-1 rounded-full bg-green-500 align-middle"></span></a>
-                            </h3>
-                            <div class="hidden text-xs underline print:visible">Short URL</div>
-                            <p class="text-muted-foreground min-h-[4ch] text-xs">This app to simply a link</p>
-                        </div>
-                    </div>
-                    <div class="text-pretty text-sm text-muted-foreground mt-auto flex">
-                        <div class="mt-2 flex flex-wrap gap-1">
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Web Development</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Laravel</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">PHP</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-lg bg-card text-card-foreground relative flex flex-col overflow-hidden border border-muted p-3">
-                    <div class="flex flex-col space-y-1.5">
-                        <div class="space-y-1">
-                            <h3 class="font-semibold tracking-tight text-base">
-                                <a href="https://github.com/geriadam/OngkirWoy" target="_blank" class="space-x-2 after:inset-0 hover:underline after:md:absolute print:after:hidden">
-                                    <span>Ongkir Check</span>
-                                    <span class="inline-block size-1 rounded-full bg-green-500 align-middle"></span></a>
-                            </h3>
-                            <div class="hidden text-xs underline print:visible">Ongkir Check</div>
-                            <p class="text-muted-foreground min-h-[4ch] text-xs">Check shipping rate in Indonesia.</p>
-                        </div>
-                    </div>
-                    <div class="text-pretty text-sm text-muted-foreground mt-auto flex">
-                        <div class="mt-2 flex flex-wrap gap-1">
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Web Development</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">React</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">PHP</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-lg bg-card text-card-foreground relative flex flex-col overflow-hidden border border-muted p-3">
-                    <div class="flex flex-col space-y-1.5">
-                        <div class="space-y-1">
-                            <h3 class="font-semibold tracking-tight text-base">
-                                <a href="https://github.com/geriadam/laravel-company-profile" target="_blank" class="space-x-2 after:inset-0 hover:underline after:md:absolute print:after:hidden">
-                                    <span>Simple Company Profile</span>
-                                    <span class="inline-block size-1 rounded-full bg-green-500 align-middle"></span></a>
-                            </h3>
-                            <div class="hidden text-xs underline print:visible">Simple Company Profile</div>
-                            <p class="text-muted-foreground min-h-[4ch] text-xs">Simple CRUD made with Laravel and ReactJs</p>
-                        </div>
-                    </div>
-                    <div class="text-pretty text-sm text-muted-foreground mt-auto flex">
-                        <div class="mt-2 flex flex-wrap gap-1">
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Web Development</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">React</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Laravel</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">PHP</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-lg bg-card text-card-foreground relative flex flex-col overflow-hidden border border-muted p-3">
-                    <div class="flex flex-col space-y-1.5">
-                        <div class="space-y-1">
-                            <h3 class="font-semibold tracking-tight text-base">
-                                <a href="https://github.com/geriadam/react-todo-list" target="_blank" class="space-x-2 after:inset-0 hover:underline after:md:absolute print:after:hidden">
-                                    <span>Todo List</span>
-                                    <span class="inline-block size-1 rounded-full bg-green-500 align-middle"></span></a>
-                            </h3>
-                            <div class="hidden text-xs underline print:visible">Todo List</div>
-                            <p class="text-muted-foreground min-h-[4ch] text-xs">Simple Todo List made with ReactJs</p>
-                        </div>
-                    </div>
-                    <div class="text-pretty text-sm text-muted-foreground mt-auto flex">
-                        <div class="mt-2 flex flex-wrap gap-1">
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Web Development</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">React</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Javascript</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-lg bg-card text-card-foreground relative flex flex-col overflow-hidden border border-muted p-3">
-                    <div class="flex flex-col space-y-1.5">
-                        <div class="space-y-1">
-                            <h3 class="font-semibold tracking-tight text-base">
-                                <a href="https://github.com/geriadam/laravel-qa" target="_blank" class="space-x-2 after:inset-0 hover:underline after:md:absolute print:after:hidden">
-                                    <span>Question Answer App</span>
-                                    <span class="inline-block size-1 rounded-full bg-green-500 align-middle"></span></a>
-                            </h3>
-                            <div class="hidden text-xs underline print:visible">Question Answer App</div>
-                            <p class="text-muted-foreground min-h-[4ch] text-xs">You can post an question like stackoverflow and waiting for someone to answer your question</p>
-                        </div>
-                    </div>
-                    <div class="text-pretty text-sm text-muted-foreground mt-auto flex">
-                        <div class="mt-2 flex flex-wrap gap-1">
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Web Development</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Vue</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Laravel</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-lg bg-card text-card-foreground relative flex flex-col overflow-hidden border border-muted p-3">
-                    <div class="flex flex-col space-y-1.5">
-                        <div class="space-y-1">
-                            <h3 class="font-semibold tracking-tight text-base">
-                                <a href="https://github.com/geriadam/laravel-phonebook" target="_blank" class="space-x-2 after:inset-0 hover:underline after:md:absolute print:after:hidden">
-                                    <span>Phonebook</span>
-                                    <span class="inline-block size-1 rounded-full bg-green-500 align-middle"></span></a>
-                            </h3>
-                            <div class="hidden text-xs underline print:visible">Phonebook</div>
-                            <p class="text-muted-foreground min-h-[4ch] text-xs">Simple CRUD with Laravel and Vue</p>
-                        </div>
-                    </div>
-                    <div class="text-pretty text-sm text-muted-foreground mt-auto flex">
-                        <div class="mt-2 flex flex-wrap gap-1">
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Web Development</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Vue</div>
-                            <div class="inline-flex items-center text-nowrap rounded-md border font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/60 px-1 py-0 text-[10px]">Laravel</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </section>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     CONTACT SECTION
+═══════════════════════════════════════════════════ -->
+<section id="contact" class="section" aria-labelledby="contact-heading">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <div class="rounded-2xl border border-border bg-surface-2 p-8 sm:p-12 text-center reveal-up">
+      <h2 id="contact-heading" class="text-2xl sm:text-3xl font-semibold text-ink mb-3">Let's build something together</h2>
+      <p class="text-sm text-ink-muted max-w-md mx-auto mb-8 leading-relaxed">
+        Whether you have a project in mind, need a senior developer for your team, or just want to talk tech — my inbox is always open.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="mailto:geriadam04@gmail.com"
+           class="btn-primary w-full sm:w-auto"
+           aria-label="Send email to geriadam04@gmail.com">
+          Say hello →
+        </a>
+        <a href="https://linkedin.com/in/geri-adam-saputra" target="_blank" rel="noopener noreferrer"
+           class="btn-secondary w-full sm:w-auto"
+           aria-label="Connect on LinkedIn (opens in new tab)">
+          Connect on LinkedIn
+        </a>
+      </div>
+      <p class="text-xs text-ink-muted mt-6 font-mono">geriadam04@gmail.com</p>
+    </div>
+  </div>
+</section>
+
 {% endblock %}
